@@ -4,6 +4,12 @@
 
 A supposedly [STOMP](http://stomp.github.io/) client.
 
+### Features
+
+- CONNECT
+- SEND (with extra headers)
+- TODO: more message frames
+
 ### Installation
 
     $ go get github.com/marconi/boots
