@@ -1,0 +1,18 @@
+language: go
+
+go: 1.2
+
+install:
+  - go get github.com/stretchr/testify/assert
+
+services:
+  - rabbitmq
+
+before_script:
+  - sudo rabbitmq-plugins enable rabbitmq_stomp
+  - sudo rabbitmqctl add_user admin admin
+  - sudo rabbitmqctl add_vhost stomp
+  - sudo rabbitmqctl set_permissions -p stomp admin ".*" ".*" ".*"
+  - sudo service rabbitmq-server restart
+
+script: go test ./...

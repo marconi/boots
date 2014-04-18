@@ -1,5 +1,7 @@
 # Boots
 
+[![Build Status](https://travis-ci.org/marconi/boots.svg?branch=master)](https://travis-ci.org/marconi/boots)
+
 A supposedly [STOMP](http://stomp.github.io/) client.
 
 ### Installation
