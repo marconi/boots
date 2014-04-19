@@ -16,35 +16,37 @@ A supposedly [STOMP](http://stomp.github.io/) client.
 
 ### Usage
 
-    package main
+```Go
+package main
 
-    import (
-        "log"
+import (
+    "log"
 
-        "github.com/marconi/boots"
-        "github.com/marconi/boots/client"
+    "github.com/marconi/boots"
+    "github.com/marconi/boots/client"
+)
+
+func main() {
+    c := client.NewClient(
+        "localhost:61613",
+        "stomp", // vhost
+        "admin", // login
+        "admin", // passcode
     )
-
-    func main() {
-        c := client.NewClient(
-            "localhost:61613",
-            "stomp", // vhost
-            "admin", // login
-            "admin", // passcode
-        )
-        if err := c.Connect(); err != nil {
-            log.Fatal(err)
-        }
-
-        param := client.SendParam{
-            Dest:      "/queue/hello-queue",
-            Body:      "Hello!",
-            Ctype:     "text/plain",
-        }
-        if err := c.Send(param); err != nil {
-            log.Fatal(err)
-        }
+    if err := c.Connect(); err != nil {
+        log.Fatal(err)
     }
+
+    param := client.SendParam{
+        Dest:      "/queue/hello-queue",
+        Body:      "Hello!",
+        Ctype:     "text/plain",
+    }
+    if err := c.Send(param); err != nil {
+        log.Fatal(err)
+    }
+}
+```
 
 ### Notes
 
